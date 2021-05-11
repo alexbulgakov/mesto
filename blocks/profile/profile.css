@@ -7,4 +7,20 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(min-content, max-content)) 1fr;
     grid-template-rows: 120px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 896px) {
+    .profile {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .profile {
+        grid-template-columns: minmax(min-content, max-content) 47px;
+        grid-template-rows: repeat(3, minmax(min-content, max-content));
+        justify-content: center;
+    }
 }
