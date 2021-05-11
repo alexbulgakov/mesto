@@ -1,0 +1,7 @@
+.element__like {
+    width: 22px;
+    height: 19px;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+    margin: 5px 5px -1px 0;
+}
