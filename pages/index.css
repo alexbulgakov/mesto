@@ -21,3 +21,14 @@
 @import url(../blocks/element/__location-box/element__location-box.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__author/footer__author.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__close-icon/popup__close-icon.css);
+@import url(../blocks/popup/__close-icon/_shadow_true/popup__close-icon_shadow_true.css);
+@import url(../blocks/edit-form/edit-form.css);
+@import url(../blocks/edit-form/__heading/edit-form__heading.css);
+@import url(../blocks/edit-form/__input-container/edit-form__input-container.css);
+@import url(../blocks/edit-form/__item/edit-form__item.css);
+@import url(../blocks/edit-form/__handlers/edit-form__handlers.css);
+@import url(../blocks/edit-form/__button/edit-form__button.css);

@@ -4,4 +4,15 @@
     -ms-flex-item-align: end;
     align-self: flex-start;
     margin: 5px 5px 0 0;
+    transition: opacity .1s linear;
+    cursor: pointer;
+}
+
+.element__like:hover {
+    opacity: .5;
+}
+
+.element__like:active {
+    background: url(../../../images/like_dark.svg);
+    background-size: contain;
 }

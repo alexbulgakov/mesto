@@ -8,4 +8,10 @@
     display: -ms-flexbox;
     display: flex;
     margin: 37px 0 0 18px;
+    transition: opacity .1s linear;
+    cursor: pointer;
+}
+
+.profile__edit-button:hover {
+    opacity: .6;
 }
