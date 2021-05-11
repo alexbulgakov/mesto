@@ -3,4 +3,11 @@
     min-width: 320px;
     margin: 0 auto;
     padding-bottom: 60px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 904px) {
+    .footer {
+        padding-left: 19px;
+    }
 }
