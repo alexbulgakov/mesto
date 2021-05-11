@@ -3,5 +3,13 @@
     height: 100%;
     padding-top: 34px;
     padding-left: 36px;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+@media screen and (max-width: 523px) {
+    .edit-form {
+        padding-top: 25px;
+        padding-left: 22px;
+    }
 }

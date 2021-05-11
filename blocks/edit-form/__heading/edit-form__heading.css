@@ -4,3 +4,9 @@
     font-weight: 900;
     line-height: 1.21;
 }
+
+@media screen and (max-width: 523px) {
+    .edit-form__heading {
+        font-size: 18px;
+    }
+}

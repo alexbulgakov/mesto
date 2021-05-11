@@ -1,5 +1,6 @@
 .edit-form__item {
     border: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     height: 27px;
     width: 358px;
@@ -18,4 +19,11 @@
 
 .edit-form__item:focus {
     outline: none;
+}
+
+@media screen and (max-width: 523px) {
+    .edit-form__item {
+        height: 27px;
+        width: 238px;
+    }
 }
