@@ -1,5 +1,6 @@
 .edit-form__item {
     border: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     height: 27px;
     width: 358px;
