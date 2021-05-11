@@ -19,3 +19,5 @@
 @import url(../blocks/element/__location/element__location.css);
 @import url(../blocks/element/__like/element__like.css);
 @import url(../blocks/element/__location-box/element__location-box.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__author/footer__author.css);
