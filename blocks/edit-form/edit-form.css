@@ -5,3 +5,10 @@
     padding-left: 36px;
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 523px) {
+    .edit-form {
+        padding-top: 25px;
+        padding-left: 22px;
+    }
+}

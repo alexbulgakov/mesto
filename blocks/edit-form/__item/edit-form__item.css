@@ -19,3 +19,10 @@
 .edit-form__item:focus {
     outline: none;
 }
+
+@media screen and (max-width: 523px) {
+    .edit-form__item {
+        height: 27px;
+        width: 238px;
+    }
+}
