@@ -2,7 +2,6 @@
     border: 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    height: 27px;
     width: 358px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     background-color: transparent;
@@ -23,7 +22,6 @@
 
 @media screen and (max-width: 523px) {
     .edit-form__item {
-        height: 27px;
         width: 238px;
     }
 }

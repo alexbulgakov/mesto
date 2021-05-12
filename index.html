@@ -20,12 +20,11 @@
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
                     <p class="profile__about">Исследователь океана</p>
                 </div>
-                <div class="profile__edit-button">
-                    <img class="profile__edit-button-img" src="./images/pen.svg" alt="Кнопка редактирования">
-                </div>
-                <div class="profile__add-button">
+                <button class="profile__edit-button"><img class="profile__edit-button-img" src="./images/pen.svg"
+                        alt="Кнопка редактирования"></button>
+                <button class="profile__add-button">
                     <img class="profile__add-button-img" src="./images/plus.svg" alt="Кнопка добавления">
-                </div>
+                </button>
             </section>
 
             <section class="elements">
@@ -34,70 +33,67 @@
                         <img class="element__picture" src="./images/karachaevsk.jpg" alt="Фото локации">
                         <div class="element__location-box">
                             <h2 class="element__location">Карачаевск</h2>
-                            <img class="element__like" src="./images/like.svg" alt="Лайк">
+                            <button class="element__like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img class="element__picture" src="./images/elbrus.jpg" alt="Фото локации">
                         <div class="element__location-box">
                             <h2 class="element__location">Гора Эльбрус</h2>
-                            <img class="element__like" src="./images/like.svg" alt="Лайк">
+                            <button class="element__like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img class="element__picture" src="./images/dombay.jpg" alt="Фото локации">
                         <div class="element__location-box">
                             <h2 class="element__location">Домбай</h2>
-                            <img class="element__like" src="./images/like.svg" alt="Лайк">
+                            <button class="element__like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img class="element__picture" src="./images/elbrus.jpg" alt="Фото локации">
                         <div class="element__location-box">
                             <h2 class="element__location">Гора Эльбрус</h2>
-                            <img class="element__like" src="./images/like.svg" alt="Лайк">
+                            <button class="element__like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img class="element__picture" src="./images/dombay.jpg" alt="Фото локации">
                         <div class="element__location-box">
                             <h2 class="element__location">Домбай</h2>
-                            <img class="element__like" src="./images/like.svg" alt="Лайк">
+                            <button class="element__like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img class="element__picture" src="./images/karachaevsk.jpg" alt="Фото локации">
                         <div class="element__location-box">
                             <h2 class="element__location">Карачаево-Черкессия</h2>
-                            <img class="element__like" src="./images/like.svg" alt="Лайк">
+                            <button class="element__like"></button>
                         </div>
                     </li>
                 </ul>
             </section>
-
-            <section class="popup">
-                <div class="popup__container">
-                    <img class="popup__close-icon popup__close-icon_shadow_true" src="./images/plus.svg" alt="Закрыть">
-                    <div class="edit-form">
-                        <form class="edit-form__container">
-                            <h2 class="edit-form__heading">Редактировать профиль</h2>
-                            <fieldset class="edit-form__input-container">
-                                <input class="edit-form__item edit-form__item_el_name" type="text" name="name">
-                                <input class="edit-form__item edit-form__item_el_about" type="text" name="about">
-                            </fieldset>
-                            <fieldset class="edit-form__handlers">
-                                <input class="edit-form__button" type="submit" value="Сохранить">
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </section>
         </main>
+
+        <section class="popup">
+            <div class="popup__container">
+                <img class="popup__close-icon" src="./images/plus.svg" alt="Закрыть">
+                <form class="edit-form" name="edit-form">
+                    <h2 class="edit-form__heading">Редактировать профиль</h2>
+                    <fieldset class="edit-form__input-container">
+                        <input class="edit-form__item edit-form__item_el_name" type="text" name="name">
+                        <input class="edit-form__item edit-form__item_el_about" type="text" name="about">
+                    </fieldset>
+                    <button class="edit-form__button" type="submit">Сохранить</button>
+                </form>
+            </div>
+        </section>
+
         <footer class="footer">
             <p class="footer__author">&#169; 2021 Алексей Булгаков</p>
         </footer>
     </div>
-    <script src="./pages/script.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 
 </html>

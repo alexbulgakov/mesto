@@ -7,6 +7,8 @@
     color: #FFFFFF;
     cursor: pointer;
     transition: opacity .1s linear;
+    margin: 48px 0 37px 0;
+    padding: 0;
 }
 
 .edit-form__button:hover {

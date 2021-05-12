@@ -1,7 +1,6 @@
 .header {
     max-width: 880px;
     min-width: 320px;
-    min-height: 74px;
     margin: 0 auto;
     padding-top: 45px;
     padding-bottom: 41px;
@@ -22,5 +21,6 @@
     .header {
        padding-top: 28px;
        padding-left: 27px;
+       padding-bottom: 31.6px;
     }
 }
