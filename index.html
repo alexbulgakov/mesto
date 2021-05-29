@@ -32,16 +32,30 @@
             </section>
         </main>
 
-        <section class="popup">
+        <section class="popup popup_type_edit">
             <div class="popup__container">
                 <button class="popup__close-icon" type="button"></button>
-                <form class="edit-form" name="edit-form">
-                    <h2 class="edit-form__heading">Редактировать профиль</h2>
-                    <fieldset class="edit-form__input-container">
-                        <input class="edit-form__item edit-form__item_el_name" type="text" name="name">
-                        <input class="edit-form__item edit-form__item_el_about" type="text" name="about">
+                <form class="popup-form" name="popup-form">
+                    <h2 class="popup-form__heading">Редактировать профиль</h2>
+                    <fieldset class="popup-form__input-container">
+                        <input class="popup-form__item popup-form__item_el_name" type="text" name="name">
+                        <input class="popup-form__item popup-form__item_el_about" type="text" name="about">
                     </fieldset>
-                    <button class="edit-form__button" type="submit">Сохранить</button>
+                    <button class="popup-form__button" type="submit">Сохранить</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="popup popup_type_new-card">
+            <div class="popup__container">
+                <button class="popup__close-icon" type="button"></button>
+                <form class="popup-form" name="popup-form">
+                    <h2 class="popup-form__heading">Новое место</h2>
+                    <fieldset class="popup-form__input-container">
+                        <input class="popup-form__item popup-form__item_el_name" type="text" name="name" placeholder="Название">
+                        <input class="popup-form__item popup-form__item_el_link" type="text" name="link" placeholder="Ссылка на картинку">
+                    </fieldset>
+                    <button class="popup-form__button" type="submit">Создать</button>
                 </form>
             </div>
         </section>

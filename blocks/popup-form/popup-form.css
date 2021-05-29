@@ -1,4 +1,4 @@
-.edit-form {
+.popup-form {
     width: 100%;
     height: 100%;
     padding-top: 34px;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 523px) {
-    .edit-form {
+    .popup-form {
         padding-top: 25px;
         padding-left: 22px;
     }
