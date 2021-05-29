@@ -93,9 +93,19 @@ const addCard = (location, image) => {
 
     cardElement.querySelector('.element__picture').src = image;
     cardElement.querySelector('.element__location').textContent = location;
-    cardContainer.append(cardElement);
+    cardContainer.prepend(cardElement);
 }
 
 initialCards.forEach(item => {
     addCard(item.name, item.link);
 });
+
+// добавление новой карточки
+
+const addNewCard = evt => {
+    evt.preventDefault();
+    addCard(nameOfLocation.value, imageLink.value);
+    popupNewCard.classList.remove('popup_opened');
+}
+
+formElementNew.addEventListener('submit', addNewCard);
