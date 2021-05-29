@@ -13,6 +13,11 @@ const nameOfLocation = popupNewCard.querySelector('.popup-form__item_el_name');
 const imageLink = popupNewCard.querySelector('.popup-form__item_el_link');
 const closeButtonNew = popupNewCard.querySelector('.popup__close-icon');
 
+const popupImage = document.querySelector('.popup_type_image');
+const closeButtonPicture = popupImage.querySelector('.popup__close-icon');
+const popupPicture = popupImage.querySelector('.popup__picture');
+const popupName = popupImage.querySelector('.popup__location-name');
+
 const profileName = document.querySelector('.profile__name');
 const aboutProfile = document.querySelector('.profile__about');
 const cardContainer = document.querySelector('.elements__list');
@@ -106,6 +111,20 @@ const addCard = (location, image, position = 'append') => {
     } else cardContainer.prepend(cardElement);
 
     cardElement.querySelector('.element__delete').addEventListener('click', deleteCard);
+
+    const openPopupImage = () => {
+        popupImage.classList.add('popup_opened');
+        popupPicture.src = image;
+        popupName.textContent = location;
+    }
+
+    cardElement.querySelector('.element__picture').addEventListener('click', openPopupImage);
+    
+    const closePopupImage = () => {
+        popupImage.classList.remove('popup_opened');
+    }
+
+    closeButtonPicture.addEventListener('click', closePopupImage);
 }
 
 initialCards.forEach(item => {
