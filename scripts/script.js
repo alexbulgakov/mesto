@@ -90,9 +90,13 @@ formElementEdit.addEventListener('submit', editProfile);
 const addCard = (location, image) => {
     const cardTemplate = document.querySelector('#card').content;
     const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+    const addLike = evt => {
+        evt.target.classList.toggle('element__like_active');
+    }
 
     cardElement.querySelector('.element__picture').src = image;
     cardElement.querySelector('.element__location').textContent = location;
+    cardElement.querySelector('.element__like').addEventListener('click', addLike);
     cardContainer.prepend(cardElement);
 }
 
