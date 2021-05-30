@@ -79,7 +79,7 @@ const editProfile = evt => {
     evt.preventDefault();
     profileName.textContent = nameOfPerson.value;
     aboutProfile.textContent = aboutPerson.value;
-    popupEditProfile.classList.remove('popup_opened');
+    togglePopup(popupEditProfile);
 }
 
 formElementEditProfile.addEventListener('submit', editProfile);
@@ -127,7 +127,7 @@ initialCards.forEach(item => {
 const addNewCard = evt => {
     evt.preventDefault();
     addCard(nameOfLocation.value, imageLink.value, 'prepend');
-    popupAddNewCard.classList.remove('popup_opened');
+    togglePopup(popupAddNewCard);
     nameOfLocation.value = '';
     imageLink.value = '';
 }
