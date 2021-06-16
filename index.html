@@ -20,8 +20,8 @@
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
                     <p class="profile__about">Исследователь океана</p>
                 </div>
-                <button class="profile__edit-button" type="button"><img class="profile__edit-button-img" src="./images/pen.svg"
-                        alt="Кнопка редактирования"></button>
+                <button class="profile__edit-button" type="button"><img class="profile__edit-button-img"
+                        src="./images/pen.svg" alt="Кнопка редактирования"></button>
                 <button class="profile__add-button" type="button">
                     <img class="profile__add-button-img" src="./images/plus.svg" alt="Кнопка добавления">
                 </button>
@@ -35,13 +35,21 @@
         <section class="popup popup_type_edit">
             <div class="popup__container">
                 <button class="popup__close-icon" type="button"></button>
-                <form class="popup-form" name="popup-form">
+                <form class="popup-form" name="popup-form" novalidate>
                     <h2 class="popup-form__heading">Редактировать профиль</h2>
                     <fieldset class="popup-form__input-container">
-                        <input class="popup-form__item popup-form__item_el_name" type="text" name="name">
-                        <input class="popup-form__item popup-form__item_el_about" type="text" name="about">
+                        <label class="popup-form__field">
+                            <input class="popup-form__item popup-form__item_el_name" type="text" name="name-input"
+                                id="name-input" required minlength="2" maxlength="40">
+                            <span class="popup-form__input-error name-input-error"></span>
+                        </label>
+                        <label class="popup-form__field">
+                            <input class="popup-form__item popup-form__item_el_about" type="text" name="about-input"
+                                id="about-input" required minlength="2" maxlength="200">
+                            <span class="popup-form__input-error about-input-error"></span>
+                        </label>
+                        <button class="popup-form__button" type="submit">Сохранить</button>
                     </fieldset>
-                    <button class="popup-form__button" type="submit">Сохранить</button>
                 </form>
             </div>
         </section>
@@ -49,13 +57,21 @@
         <section class="popup popup_type_new-card">
             <div class="popup__container">
                 <button class="popup__close-icon" type="button"></button>
-                <form class="popup-form" name="popup-form">
+                <form class="popup-form" name="popup-form" novalidate>
                     <h2 class="popup-form__heading">Новое место</h2>
                     <fieldset class="popup-form__input-container">
-                        <input class="popup-form__item popup-form__item_el_name" type="text" name="name" placeholder="Название">
-                        <input class="popup-form__item popup-form__item_el_link" type="text" name="link" placeholder="Ссылка на картинку">
+                        <label class="popup-form__field">
+                            <input class="popup-form__item popup-form__item_el_name" type="text" name="location-input"
+                                placeholder="Название" id="location-input" required minlength="2" maxlength="30">
+                            <span class="popup-form__input-error location-input-error"></span>
+                        </label>
+                        <label class="popup-form__field">
+                            <input class="popup-form__item popup-form__item_el_link" type="url" name="link-input"
+                                placeholder="Ссылка на картинку" id="link-input" required>
+                            <span class="popup-form__input-error link-input-error"></span>
+                        </label>
+                        <button class="popup-form__button" type="submit">Создать</button>
                     </fieldset>
-                    <button class="popup-form__button" type="submit">Создать</button>
                 </form>
             </div>
         </section>
@@ -82,9 +98,10 @@
                 <button class="element__like" type="button"></button>
             </div>
         </li>
-      </template>
+    </template>
 
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>

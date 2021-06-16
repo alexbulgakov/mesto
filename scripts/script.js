@@ -52,8 +52,33 @@ const initialCards = [
 // общая функция откртия и закрытия любого попапа
 
 const togglePopup = (popup) => {
-    popup.classList.toggle('popup_opened');
+    if (popup.classList.contains('popup_opened')) {
+        document.removeEventListener('keydown', handleEscUp);
+        popup.classList.toggle('popup_opened');
+    } else {
+        document.addEventListener('keydown', handleEscUp);
+        popup.classList.toggle('popup_opened');
+    }
 }
+
+// закрытие попапа при нажатии клавиши esc
+
+const handleEscUp = (evt) => {
+    const activePopup = document.querySelector('.popup_opened');
+    if (evt.which === 27) {
+        togglePopup(activePopup);
+    }
+};
+
+// закрытие любого попапа при нажатии на кнопку и на оверлей
+
+const closePopup = (popup) => {
+    popup.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-icon')) {
+            togglePopup(popup);
+        }
+    });
+};
 
 // открытие и закрытие попапа редактирования профиля
 
@@ -65,13 +90,13 @@ const openPopupEditProfile = () => {
 
 editButton.addEventListener('click', openPopupEditProfile);
 
-closeButtonEditProfile.addEventListener('click', () => togglePopup(popupEditProfile));
+closePopup(popupEditProfile);
 
 // открытие и закрытие попапа добавления карточки
 
 addButton.addEventListener('click', () => togglePopup(popupAddNewCard));
 
-closeButtonAddNewCard.addEventListener('click', () => togglePopup(popupAddNewCard));
+closePopup(popupAddNewCard);
 
 // редактирование данных профиля
 
