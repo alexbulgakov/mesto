@@ -52,17 +52,13 @@ const enableValidation = (settings) => {
         formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
         });
-        const fieldsetList = Array.from(formElement.querySelectorAll(settings.fieldsetSelector));
-        fieldsetList.forEach((fieldset) => {
-            setEventListeners(fieldset, settings);
-        });
+        setEventListeners(formElement, settings);
     });
 };
 
 enableValidation({
     formSelector: '.popup-form',
     inputSelector: '.popup-form__item',
-    fieldsetSelector: '.popup-form__input-container',
     submitButtonSelector: '.popup-form__button',
     inactiveButtonClass: 'popup-form__button_inactive',
     inputErrorClass: 'popup-form__item_type_error',

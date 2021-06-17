@@ -22,6 +22,8 @@ const profileName = document.querySelector('.profile__name');
 const aboutProfile = document.querySelector('.profile__about');
 const cardContainer = document.querySelector('.elements__list');
 
+const escKeycode = 27;
+
 const initialCards = [
     {
         name: 'Архыз',
@@ -64,8 +66,8 @@ const togglePopup = (popup) => {
 // закрытие попапа при нажатии клавиши esc
 
 const handleEscUp = (evt) => {
-    const activePopup = document.querySelector('.popup_opened');
-    if (evt.which === 27) {
+    if (evt.which === escKeycode) {
+        const activePopup = document.querySelector('.popup_opened');
         togglePopup(activePopup);
     }
 };
@@ -121,26 +123,33 @@ const deleteCardHandler = evt => {
     evt.target.closest('.element').remove();
 }
 
-const addCard = (location, image, position = 'append') => {
+const createCard = (location, image) => {
     const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+    const elementPicture = cardElement.querySelector('.element__picture');
 
-    cardElement.querySelector('.element__picture').src = image;
+    elementPicture.src = image;
+    elementPicture.alt = "Изображение";
     cardElement.querySelector('.element__location').textContent = location;
     cardElement.querySelector('.element__like').addEventListener('click', addLikeHandler);
-
-    if (position === 'append') {
-        cardContainer.append(cardElement);
-    } else cardContainer.prepend(cardElement);
 
     cardElement.querySelector('.element__delete').addEventListener('click', deleteCardHandler);
 
     const openPopupViewImage = () => {
         togglePopup(popupViewImage);
         popupViewImagePicture.src = image;
+        popupViewImagePicture.alt = "Изображение";
         popupViewImageName.textContent = location;
     }
 
-    cardElement.querySelector('.element__picture').addEventListener('click', openPopupViewImage);
+    elementPicture.addEventListener('click', openPopupViewImage);
+
+    return cardElement;
+}
+
+const addCard = (location, image, position = 'append') => {
+    if (position === 'append') {
+        cardContainer.append(createCard(location, image));
+    } else cardContainer.prepend(createCard(location, image));
 }
 
 initialCards.forEach(item => {
@@ -155,6 +164,7 @@ const addNewCard = evt => {
     togglePopup(popupAddNewCard);
     nameOfLocation.value = '';
     imageLink.value = '';
+    popupAddNewCard.querySelector('.popup-form__button').classList.add('popup-form__button_inactive');
 }
 
 formElementAddNewCard.addEventListener('submit', addNewCard);
