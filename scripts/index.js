@@ -1,3 +1,6 @@
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 
@@ -5,17 +8,14 @@ const popupEditProfile = document.querySelector('.popup_type_edit');
 const formElementEditProfile = popupEditProfile.querySelector('.popup-form');
 const nameOfPerson = popupEditProfile.querySelector('.popup-form__item_el_name');
 const aboutPerson = popupEditProfile.querySelector('.popup-form__item_el_about');
-const closeButtonEditProfile = popupEditProfile.querySelector('.popup__close-icon');
 
 const popupAddNewCard = document.querySelector('.popup_type_new-card');
 const formElementAddNewCard = popupAddNewCard.querySelector('.popup-form');
 const nameOfLocation = popupAddNewCard.querySelector('.popup-form__item_el_name');
 const imageLink = popupAddNewCard.querySelector('.popup-form__item_el_link');
-const closeButtonAddNewCard = popupAddNewCard.querySelector('.popup__close-icon');
 const addNewCardButton = popupAddNewCard.querySelector('.popup-form__button');
 
 const popupViewImage = document.querySelector('.popup_type_image');
-const closeButtonViewImage = popupViewImage.querySelector('.popup__close-icon');
 const popupViewImagePicture = popupViewImage.querySelector('.popup__picture');
 const popupViewImageName = popupViewImage.querySelector('.popup__location-name');
 
@@ -114,24 +114,10 @@ formElementEditProfile.addEventListener('submit', editProfile);
 
 // отрисовка карточек из коробки, лайк и удаление
 
-const cardTemplate = document.querySelector('#card').content;
-const addLikeHandler = evt => {
-    evt.target.classList.toggle('element__like_active');
-}
-const deleteCardHandler = evt => {
-    evt.target.closest('.element').remove();
-}
-
 const createCard = (location, image) => {
-    const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+    const card = new Card(location, image, '#card');
+    const cardElement = card.generateCard();
     const elementPicture = cardElement.querySelector('.element__picture');
-
-    elementPicture.src = image;
-    elementPicture.alt = location;
-    cardElement.querySelector('.element__location').textContent = location;
-    cardElement.querySelector('.element__like').addEventListener('click', addLikeHandler);
-
-    cardElement.querySelector('.element__delete').addEventListener('click', deleteCardHandler);
 
     const openPopupViewImage = () => {
         togglePopup(popupViewImage);
@@ -169,3 +155,22 @@ const addNewCard = evt => {
 }
 
 formElementAddNewCard.addEventListener('submit', addNewCard);
+
+// активация валидации
+const formList = Array.from(document.querySelectorAll('.popup-form'));
+
+formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+        evt.preventDefault();
+    });
+    
+    const validator = new FormValidator({
+        inputSelector: '.popup-form__item',
+        submitButtonSelector: '.popup-form__button',
+        inactiveButtonClass: 'popup-form__button_inactive',
+        inputErrorClass: 'popup-form__item_type_error',
+        errorClass: 'popup-form__input-error_active'
+    }, formElement);
+
+    validator.enableValidation();
+});
