@@ -1,8 +1,9 @@
 export default class Card {
-    constructor(location, image, cardSelector) {
-        this._image = image;
-        this._location = location;
+    constructor(data, openPopupViewImage, cardSelector) {
+        this._image = data.link;
+        this._location = data.name;
         this._cardSelector = cardSelector;
+        this._openPopupViewImage = openPopupViewImage;
     }
 
     _getTemplate() {
@@ -19,24 +20,31 @@ export default class Card {
         evt.target.classList.toggle('element__like_active');
     }
     
-    _deleteCardHandler(evt) {
-        evt.target.closest('.element').remove();
+    _deleteCardHandler() {
+        this._element.remove();
+        this._element = null;
     }
 
     _setEventListeners() {
-        this._element.querySelector('.element__like').addEventListener('click', (evt) => {
+        this._likeButton.addEventListener('click', (evt) => {
             this._addLikeHandler(evt);
         });
 
-        this._element.querySelector('.element__delete').addEventListener('click', (evt) => {
-            this._deleteCardHandler(evt);
+        this._deleteButton.addEventListener('click', () => {
+            this._deleteCardHandler();
+        });
+
+        this._elementPicture.addEventListener('click', () => {
+            this._openPopupViewImage();
         });
     }
 
     generateCard() {
         this._element = this._getTemplate();
-        this._setEventListeners();
         this._elementPicture = this._element.querySelector('.element__picture');
+        this._likeButton = this._element.querySelector('.element__like');
+        this._deleteButton = this._element.querySelector('.element__delete');
+        this._setEventListeners();
 
         this._elementPicture.src = this._image;
         this._elementPicture.alt = this._location;
