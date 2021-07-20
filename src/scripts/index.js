@@ -6,6 +6,7 @@ import UserInfo from './UserInfo.js';
 import FormValidator from './FormValidator.js';
 import initialCards from './initial-сards.js';
 import settings from './settings.js';
+import '../pages/index.css';
 
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
