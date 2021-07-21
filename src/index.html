@@ -22,7 +22,8 @@
                 <button class="profile__edit-button" type="button"><img class="profile__edit-button-img"
                         src="<%=require('./images/pen.svg')%>" alt="Кнопка редактирования"></button>
                 <button class="profile__add-button" type="button">
-                    <img class="profile__add-button-img" src="<%=require('./images/plus.svg')%>" alt="Кнопка добавления">
+                    <img class="profile__add-button-img" src="<%=require('./images/plus.svg')%>"
+                        alt="Кнопка добавления">
                 </button>
             </section>
 
@@ -39,12 +40,13 @@
                     <fieldset class="popup-form__input-container">
                         <label class="popup-form__field">
                             <input class="popup-form__item popup-form__item_el_name" type="text" name="name-input"
-                                id="name-input" required minlength="2" maxlength="40">
+                                id="name-input" required minlength="2" maxlength="40" placeholder="Имя">
                             <span class="popup-form__input-error name-input-error"></span>
                         </label>
                         <label class="popup-form__field">
                             <input class="popup-form__item popup-form__item_el_about" type="text" name="about-input"
-                                id="about-input" required minlength="2" maxlength="200">
+                                id="about-input" required minlength="2" maxlength="200"
+                                placeholder="Профессиональная деятельность">
                             <span class="popup-form__input-error about-input-error"></span>
                         </label>
                         <button class="popup-form__button" type="submit">Сохранить</button>

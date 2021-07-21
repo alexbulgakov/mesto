@@ -1,34 +1,28 @@
-import Card from './Card.js';
-import Section from './Section.js';
-import popupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
-import FormValidator from './FormValidator.js';
-import initialCards from './initial-сards.js';
-import settings from './settings.js';
-import '../pages/index.css';
+import Card from '../Card.js';
+import Section from '../Section.js';
+import popupWithImage from '../PopupWithImage.js';
+import PopupWithForm from '../PopupWithForm.js';
+import UserInfo from '../UserInfo.js';
+import FormValidator from '../FormValidator.js';
+import '../../pages/index.css';
 
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
-
-const popupEditProfileSelector = '.popup_type_edit';
-const popupEditProfile = document.querySelector('.popup_type_edit');
-const formElementEditProfile = popupEditProfile.querySelector('.popup-form');
-
-const cardSelector = '#card';
-
-const popupAddNewCardSelector = '.popup_type_new-card';
-const popupAddNewCard = document.querySelector('.popup_type_new-card');
-const formElementAddNewCard = popupAddNewCard.querySelector('.popup-form');
-
-const popupViewImageSelector = '.popup_type_image';
-
-const profileNameSelector = '.profile__name';
-const aboutProfileSelector = '.profile__about';
-const cardContainerSelector = '.elements__list';
-
-const nameInput = document.querySelector('#name-input');
-const aboutInput = document.querySelector('#about-input');
+import {
+    editButton,
+    addButton,
+    popupEditProfileSelector,
+    formElementEditProfile,
+    cardSelector,
+    popupAddNewCardSelector,
+    formElementAddNewCard,
+    popupViewImageSelector,
+    profileNameSelector,
+    aboutProfileSelector,
+    cardContainerSelector,
+    nameInput,
+    aboutInput,
+    initialCards,
+    settings
+} from '../utils/constants.js'
 
 const popupViewImageClass = new popupWithImage(popupViewImageSelector);
 popupViewImageClass.setEventListeners();
@@ -100,10 +94,12 @@ addNewCardValidator.enableValidation();
 editButton.addEventListener('click', () => {
     initUserInfo();
     editProfileValidator.toggleButtonState();
+    editProfileValidator.hideErrors();
     popupWithFormEdit.open();
 });
 
 addButton.addEventListener('click', () => {
+    addNewCardValidator.hideErrors();
     addNewCardValidator.toggleButtonState();
     popupAddCard.open();
 })
