@@ -1,10 +1,10 @@
-import Card from '../Card.js';
-import Section from '../Section.js';
-import popupWithImage from '../PopupWithImage.js';
-import PopupWithForm from '../PopupWithForm.js';
-import UserInfo from '../UserInfo.js';
-import FormValidator from '../FormValidator.js';
-import '../../pages/index.css';
+import Card from '../scripts/components/Card.js';
+import Section from '../scripts/components/Section.js';
+import popupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import UserInfo from '../scripts/components/UserInfo.js';
+import FormValidator from '../scripts/components/FormValidator.js';
+import './index.css';
 
 import {
     editButton,
@@ -22,7 +22,7 @@ import {
     aboutInput,
     initialCards,
     settings
-} from '../utils/constants.js'
+} from '../scripts/utils/constants.js'
 
 const popupViewImageClass = new popupWithImage(popupViewImageSelector);
 popupViewImageClass.setEventListeners();
