@@ -69,7 +69,13 @@ const initUserInfo = () => {
 const popupWithFormEdit = new PopupWithForm({
     popupSelector: popupEditProfileSelector,
     callbackSubmitForm: (data) => {
-        userInfo.setUserInfo({ name: data['name-input'], about: data['about-input'] });
+        api.setUserInfo(data)
+            .then(res => {
+                userInfo.setUserInfo({ name: res.name, about: res.about });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
         popupWithFormEdit.close();
     }
 });
@@ -99,16 +105,6 @@ const createCard = (item) => {
 
     return card.generateCard();
 }
-
-// const initialCardList = new Section({
-//     items: initialCards,
-//     renderer: (item) => {
-//         initialCardList.setItem(createCard(item));
-//     }
-// }, cardContainerSelector);
-
-// initialCardList.renderItems();
-
 
 // активация валидации
 

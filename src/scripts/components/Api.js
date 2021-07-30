@@ -16,6 +16,7 @@ export default class Api {
 
     setUserInfo(info) {
         return fetch(`${this._options.baseUrl}/users/me`, {
+            method: 'PATCH',
             headers: this._options.headers,
             body: JSON.stringify({
                 name: info.name,
