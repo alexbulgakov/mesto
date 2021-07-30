@@ -14,6 +14,7 @@ export const cardContainerSelector = '.elements__list';
 export const nameInput = document.querySelector('#name-input');
 export const aboutInput = document.querySelector('#about-input');
 export const profileAvatarSelector = '.profile__avatar';
+export const popupDeleteCardSelector = '.popup_type_delete';
 
 export const settings = {
     inputSelector: '.popup-form__item',

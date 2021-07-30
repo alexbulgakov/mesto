@@ -23,8 +23,10 @@ import {
     aboutInput,
     settings,
     options,
-    profileAvatarSelector
+    profileAvatarSelector,
+    popupDeleteCardSelector
 } from '../scripts/utils/constants.js'
+import PopupWithDelete from '../scripts/components/PopupWithDelete.js';
 
 const popupViewImageClass = new popupWithImage(popupViewImageSelector);
 popupViewImageClass.setEventListeners();
@@ -98,12 +100,25 @@ const popupAddCard = new PopupWithForm({
 
 popupAddCard.setEventListeners();
 
+const popupDeleteCard = new PopupWithDelete({
+    popupSelector: popupDeleteCardSelector,
+    callbackSubmitForm: () => {
+        popupDeleteCard.deleteCardHandler();
+        popupDeleteCard.close();
+    }
+});
+
+popupDeleteCard.setEventListeners();
+
 const createCard = (item) => {
     const card = new Card(
         {
             data: item,
             handleCardClick: () => {
                 popupViewImageClass.open(item.link, item.name)
+            },
+            handleCardDelete: () => {
+                popupDeleteCard.open();
             }
         },
         cardSelector
