@@ -24,4 +24,11 @@ export default class Api {
         })
             .then(res => this._getRes(res));
     }
+
+    getCards() {
+        return fetch(`${this._options.baseUrl}/cards`, {
+            headers: this._options.headers
+        })
+        .then(res => this._getRes(res));
+    }
 }

@@ -21,7 +21,6 @@ import {
     cardContainerSelector,
     nameInput,
     aboutInput,
-    initialCards,
     settings,
     options,
     profileAvatarSelector
@@ -31,6 +30,12 @@ const popupViewImageClass = new popupWithImage(popupViewImageSelector);
 popupViewImageClass.setEventListeners();
 
 const userInfo = new UserInfo({ nameSelector: profileNameSelector, aboutSelector: aboutProfileSelector, avatarSelector: profileAvatarSelector });
+
+const cardList = new Section({
+    renderer: (item) => {
+        cardList.setItem(createCard(item));
+    }
+}, cardContainerSelector);
 
 const api = new Api(options);
 api.getUserInfo()
@@ -43,6 +48,16 @@ api.getUserInfo()
     })
     .catch((error) => {
         console.log(error);
+    })
+    .finally(() => {
+        api.getCards()
+            .then(res => {
+                console.log(res);
+                cardList.renderItems(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     })
 
 const initUserInfo = () => {
@@ -85,14 +100,14 @@ const createCard = (item) => {
     return card.generateCard();
 }
 
-const initialCardList = new Section({
-    items: initialCards,
-    renderer: (item) => {
-        initialCardList.setItem(createCard(item));
-    }
-}, cardContainerSelector);
+// const initialCardList = new Section({
+//     items: initialCards,
+//     renderer: (item) => {
+//         initialCardList.setItem(createCard(item));
+//     }
+// }, cardContainerSelector);
 
-initialCardList.renderItems();
+// initialCardList.renderItems();
 
 
 // активация валидации
