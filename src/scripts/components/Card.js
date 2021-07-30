@@ -4,6 +4,8 @@ export default class Card {
         this._location = data.name;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
+        this._likes = data.likes;
+        this._numberOfLikes = data.likes.length;
     }
 
     _getTemplate() {
@@ -44,7 +46,10 @@ export default class Card {
         this._elementPicture = this._element.querySelector('.element__picture');
         this._likeButton = this._element.querySelector('.element__like');
         this._deleteButton = this._element.querySelector('.element__delete');
+        this._likesCounter = this._element.querySelector('.element__likes-counter');
         this._setEventListeners();
+
+        this._likesCounter.textContent = this._numberOfLikes;
 
         this._elementPicture.src = this._image;
         this._elementPicture.alt = this._location;

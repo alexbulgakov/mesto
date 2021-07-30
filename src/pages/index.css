@@ -18,6 +18,8 @@
 @import url(../blocks/element/__picture/element__picture.css);
 @import url(../blocks/element/__delete/element__delete.css);
 @import url(../blocks/element/__location/element__location.css);
+@import url(../blocks/element/__like-box/element__like-box.css);
+@import url(../blocks/element/__likes-counter/element__likes-counter.css);
 @import url(../blocks/element/__like/element__like.css);
 @import url(../blocks/element/__like/_active/element__like_active.css);
 @import url(../blocks/element/__location-box/element__location-box.css);
