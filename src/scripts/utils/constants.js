@@ -13,6 +13,7 @@ export const aboutProfileSelector = '.profile__about';
 export const cardContainerSelector = '.elements__list';
 export const nameInput = document.querySelector('#name-input');
 export const aboutInput = document.querySelector('#about-input');
+export const profileAvatarSelector = '.profile__avatar';
 
 export const initialCards = [
     {
@@ -47,5 +48,13 @@ export const settings = {
     inactiveButtonClass: 'popup-form__button_inactive',
     inputErrorClass: 'popup-form__item_type_error',
     errorClass: 'popup-form__input-error_active'
+};
+
+export const options = {
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-26',
+    headers: {
+        authorization: 'de3be763-36f0-4323-96ef-5a3ebe72ac8d',
+        'Content-Type': 'application/json'
+    }
 };
 

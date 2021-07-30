@@ -4,6 +4,7 @@ import popupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 import FormValidator from '../scripts/components/FormValidator.js';
+import Api from '../scripts/components/Api.js';
 import './index.css';
 
 import {
@@ -21,13 +22,28 @@ import {
     nameInput,
     aboutInput,
     initialCards,
-    settings
+    settings,
+    options,
+    profileAvatarSelector
 } from '../scripts/utils/constants.js'
 
 const popupViewImageClass = new popupWithImage(popupViewImageSelector);
 popupViewImageClass.setEventListeners();
 
-const userInfo = new UserInfo({ nameSelector: profileNameSelector, aboutSelector: aboutProfileSelector });
+const userInfo = new UserInfo({ nameSelector: profileNameSelector, aboutSelector: aboutProfileSelector, avatarSelector: profileAvatarSelector });
+
+const api = new Api(options);
+api.getUserInfo()
+    .then(res => {
+        userInfo.setUserAvatar(res.avatar);
+        userInfo.setUserInfo({
+            name: res.name,
+            about: res.about
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    })
 
 const initUserInfo = () => {
     const userData = userInfo.getUserInfo();
@@ -38,7 +54,7 @@ const initUserInfo = () => {
 const popupWithFormEdit = new PopupWithForm({
     popupSelector: popupEditProfileSelector,
     callbackSubmitForm: (data) => {
-        userInfo.setUserInfo(data);
+        userInfo.setUserInfo({ name: data['name-input'], about: data['about-input'] });
         popupWithFormEdit.close();
     }
 });
