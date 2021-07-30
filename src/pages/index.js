@@ -85,7 +85,13 @@ popupWithFormEdit.setEventListeners();
 const popupAddCard = new PopupWithForm({
     popupSelector: popupAddNewCardSelector,
     callbackSubmitForm: (data) => {
-        initialCardList.setItem(createCard(data), 'prepend');
+        api.addCard(data)
+            .then(res => {
+                cardList.setItem(createCard(res), 'prepend');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
         popupAddCard.close();
     }
 });

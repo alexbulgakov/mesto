@@ -30,6 +30,18 @@ export default class Api {
         return fetch(`${this._options.baseUrl}/cards`, {
             headers: this._options.headers
         })
-        .then(res => this._getRes(res));
+            .then(res => this._getRes(res));
+    }
+
+    addCard(data) {
+        return fetch(`${this._options.baseUrl}/cards`, {
+            method: 'POST',
+            headers: this._options.headers,
+            body: JSON.stringify({
+                name: data.name,
+                link: data.link,
+            })
+        })
+            .then(res => this._getRes(res));
     }
 }
