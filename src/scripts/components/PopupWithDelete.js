@@ -12,6 +12,14 @@ export default class PopupWithDelete extends Popup {
         super.open();
     }
 
+    loader(status) {
+        this._formButton = this._formElement.querySelector('.popup-form__button');
+        if (status) {
+            this._formButtonText = this._formButton.textContent;
+            this._formButton.textContent = 'Cохранение...';
+        } else this._formButton.textContent = this._formButtonText;
+    }
+
     setEventListeners() {
         super.setEventListeners();
         this._formElement.addEventListener('submit', this._callbackSubmitForm);

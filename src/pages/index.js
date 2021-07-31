@@ -92,12 +92,16 @@ popupWithFormEdit.setEventListeners();
 const popupAddCard = new PopupWithForm({
     popupSelector: popupAddNewCardSelector,
     callbackSubmitForm: (data) => {
+        popupAddCard.loader(true);
         api.addCard(data)
             .then(res => {
                 cardList.setItem(createCard(res), 'prepend');
             })
             .catch((error) => {
                 console.log(error);
+            })
+            .finally(() => {
+                popupAddCard.loader(false);
             });
         popupAddCard.close();
     }
@@ -108,14 +112,18 @@ popupAddCard.setEventListeners();
 const popupDeleteCard = new PopupWithDelete({
     popupSelector: popupDeleteCardSelector,
     callbackSubmitForm: () => {
+        popupDeleteCard.loader(true);
         api.deleteCard(popupDeleteCard.card.id)
-            .then(res => {
+            .then(() => {
                 popupDeleteCard.card.deleteCardHandler();
                 popupDeleteCard.close();
             })
             .catch((error) => {
                 console.log(error);
             })
+            .finally(() => {
+                popupDeleteCard.loader(false);
+            });
     }
 });
 
@@ -124,6 +132,7 @@ popupDeleteCard.setEventListeners();
 const popupChangeAvatar = new PopupWithForm({
     popupSelector: popupChangeAvatarSelector,
     callbackSubmitForm: (data) => {
+        popupChangeAvatar.loader(true);
         api.setUserAvatar(data["link-avatar"])
             .then(res => {
                 userInfo.setUserAvatar(res.avatar);
@@ -132,6 +141,9 @@ const popupChangeAvatar = new PopupWithForm({
             .catch((error) => {
                 console.log(error);
             })
+            .finally(() => {
+                popupChangeAvatar.loader(false);
+            });
     }
 });
 
