@@ -44,4 +44,12 @@ export default class Api {
         })
             .then(res => this._getRes(res));
     }
+
+    deleteCard(cardId) {
+        return fetch(`${this._options.baseUrl}/cards/${cardId}`, {
+            method: 'DELETE',
+            headers: this._options.headers
+        })
+            .then(res => this._getRes(res));
+    }
 }

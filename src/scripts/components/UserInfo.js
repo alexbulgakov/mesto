@@ -14,7 +14,7 @@ export default class UserInfo {
         this._profileAbout.textContent = about;
     }
 
-    setUserAvatar(url) {
-        this._profileAvatar.src = url;
-    }
+    // setUserAvatar(url) {
+    //     this._profileAvatar.src = url;
+    // }
 }

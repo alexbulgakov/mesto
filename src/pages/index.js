@@ -39,14 +39,17 @@ const cardList = new Section({
     }
 }, cardContainerSelector);
 
+let userId = null;
+
 const api = new Api(options);
 api.getUserInfo()
     .then(res => {
-        userInfo.setUserAvatar(res.avatar);
+        // userInfo.setUserAvatar(res.avatar);
         userInfo.setUserInfo({
             name: res.name,
             about: res.about
         });
+        userId = res._id;
     })
     .catch((error) => {
         console.log(error);
@@ -54,7 +57,6 @@ api.getUserInfo()
     .finally(() => {
         api.getCards()
             .then(res => {
-                console.log(res);
                 cardList.renderItems(res);
             })
             .catch((error) => {
@@ -103,8 +105,14 @@ popupAddCard.setEventListeners();
 const popupDeleteCard = new PopupWithDelete({
     popupSelector: popupDeleteCardSelector,
     callbackSubmitForm: () => {
-        popupDeleteCard.deleteCardHandler();
-        popupDeleteCard.close();
+        api.deleteCard(popupDeleteCard.card.id)
+            .then(res => {
+                popupDeleteCard.card.deleteCardHandler();
+                popupDeleteCard.close();
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 });
 
@@ -118,8 +126,9 @@ const createCard = (item) => {
                 popupViewImageClass.open(item.link, item.name)
             },
             handleCardDelete: () => {
-                popupDeleteCard.open();
-            }
+                popupDeleteCard.open(card);
+            },
+            userIdCurrent: userId
         },
         cardSelector
     );
