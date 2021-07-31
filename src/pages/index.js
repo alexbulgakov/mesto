@@ -111,7 +111,8 @@ popupAddCard.setEventListeners();
 
 const popupDeleteCard = new PopupWithDelete({
     popupSelector: popupDeleteCardSelector,
-    callbackSubmitForm: () => {
+    callbackSubmitForm: (evt) => {
+        evt.preventDefault();
         popupDeleteCard.loader(true);
         api.deleteCard(popupDeleteCard.card.id)
             .then(() => {
