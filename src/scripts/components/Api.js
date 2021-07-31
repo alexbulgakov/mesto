@@ -5,6 +5,7 @@ export default class Api {
 
     _getRes(res) {
         if (res.ok) return res.json();
+        return Promise.reject(`Ошибка: ${res.status}`);
     }
 
     getUserInfo() {
