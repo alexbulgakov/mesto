@@ -45,6 +45,5 @@
 @import url(../blocks/popup-form/__input-error/_active/popup-form__input-error_active.css);
 @import url(../blocks/popup-form/__item/_type/popup-form__item_type_error.css);
 @import url(../blocks/popup-form/__button/_inactive/popup-form__button_inactive.css);
-@import url(../blocks/popup-form/__heading/_type/popup-form__heading_type_delete.css);
 @import url(../blocks/popup-form/__input-container/_type/popup-form__input-container_type_delete.css);
 @import url(../blocks/popup-form/__button/_type/popup-form__button_type_delete.css);
