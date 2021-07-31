@@ -15,6 +15,9 @@ export const nameInput = document.querySelector('#name-input');
 export const aboutInput = document.querySelector('#about-input');
 export const profileAvatarSelector = '.profile__avatar';
 export const popupDeleteCardSelector = '.popup_type_delete';
+export const popupChangeAvatarSelector = '.popup_type_new-avatar';
+export const editAvatarButton = document.querySelector('.profile__avatar-btn');
+export const formElementChangeAvatar = document.querySelector(popupChangeAvatarSelector).querySelector('.popup-form');
 
 export const settings = {
     inputSelector: '.popup-form__item',

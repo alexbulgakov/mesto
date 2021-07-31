@@ -68,4 +68,15 @@ export default class Api {
         })
             .then(res => this._getRes(res));
     }
+
+    setUserAvatar(pic) {
+        return fetch(`${this._options.baseUrl}/users/me/avatar`, {
+            method: 'PATCH',
+            headers: this._options.headers,
+            body: JSON.stringify({
+                avatar: pic
+            })
+        })
+            .then(res => this._getRes(res));
+    }
 }

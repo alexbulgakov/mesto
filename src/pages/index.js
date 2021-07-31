@@ -24,7 +24,10 @@ import {
     settings,
     options,
     profileAvatarSelector,
-    popupDeleteCardSelector
+    popupDeleteCardSelector,
+    popupChangeAvatarSelector,
+    editAvatarButton,
+    formElementChangeAvatar
 } from '../scripts/utils/constants.js'
 import PopupWithDelete from '../scripts/components/PopupWithDelete.js';
 
@@ -44,7 +47,7 @@ let userId = null;
 const api = new Api(options);
 api.getUserInfo()
     .then(res => {
-        // userInfo.setUserAvatar(res.avatar);
+        userInfo.setUserAvatar(res.avatar);
         userInfo.setUserInfo({
             name: res.name,
             about: res.about
@@ -118,6 +121,22 @@ const popupDeleteCard = new PopupWithDelete({
 
 popupDeleteCard.setEventListeners();
 
+const popupChangeAvatar = new PopupWithForm({
+    popupSelector: popupChangeAvatarSelector,
+    callbackSubmitForm: (data) => {
+        api.setUserAvatar(data["link-avatar"])
+            .then(res => {
+                userInfo.setUserAvatar(res.avatar);
+                popupChangeAvatar.close();
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+});
+
+popupChangeAvatar.setEventListeners();
+
 const createCard = (item) => {
     const card = new Card(
         {
@@ -164,6 +183,10 @@ const addNewCardValidator = new FormValidator(settings, formElementAddNewCard);
 
 addNewCardValidator.enableValidation();
 
+const editAvatarValidator = new FormValidator(settings, formElementChangeAvatar);
+
+editAvatarValidator.enableValidation();
+
 // слушатели для открытия попапов редактирования профиля и добавления новой карточки
 
 editButton.addEventListener('click', () => {
@@ -177,4 +200,10 @@ addButton.addEventListener('click', () => {
     addNewCardValidator.hideErrors();
     addNewCardValidator.toggleButtonState();
     popupAddCard.open();
+})
+
+editAvatarButton.addEventListener('click', () => {
+    editAvatarValidator.hideErrors();
+    editAvatarValidator.toggleButtonState()
+    popupChangeAvatar.open();
 })

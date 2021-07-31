@@ -14,7 +14,11 @@
         </header>
         <main class="content">
             <section class="profile">
-                <img class="profile__avatar" src="<%=require('./images/photo.jpg')%>" alt="Аватар">
+                <div class="profile__avatar-box">
+                    <img class="profile__avatar" src="<%=require('./images/photo.jpg')%>" alt="Аватар">
+                    <button type="button" class="profile__avatar-btn"><img class="profile__avatar-edit-img"
+                        src="<%=require('./images/pen.svg')%>" alt="Кнопка редактирования"></button>
+                </div>
                 <div class="profile__profile-info">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
                     <p class="profile__about">Исследователь океана</p>
@@ -72,6 +76,23 @@
                             <span class="popup-form__input-error link-error"></span>
                         </label>
                         <button class="popup-form__button" type="submit">Создать</button>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+
+        <section class="popup popup_type_new-avatar">
+            <div class="popup__container">
+                <button class="popup__close-icon" type="button"></button>
+                <form class="popup-form" name="popup-form-add" novalidate>
+                    <h2 class="popup-form__heading">Обновить аватар</h2>
+                    <fieldset class="popup-form__input-container">
+                        <label class="popup-form__field">
+                            <input class="popup-form__item popup-form__item_avatar_link" type="url" name="link-avatar"
+                                placeholder="Ссылка на аватар" id="link" required>
+                            <span class="popup-form__input-error link-error"></span>
+                        </label>
+                        <button class="popup-form__button" type="submit">Сохранить</button>
                     </fieldset>
                 </form>
             </div>
