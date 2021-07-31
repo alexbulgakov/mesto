@@ -128,6 +128,24 @@ const createCard = (item) => {
             handleCardDelete: () => {
                 popupDeleteCard.open(card);
             },
+            handleCardLike: () => {
+                api.setLike(card.id)
+                    .then(res => {
+                        card.changeLikesCounter(res.likes.length);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            },
+            handleCardDeleteLike: () => {
+                api.deleteLike(card.id)
+                    .then(res => {
+                        card.changeLikesCounter(res.likes.length);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            },
             userIdCurrent: userId
         },
         cardSelector

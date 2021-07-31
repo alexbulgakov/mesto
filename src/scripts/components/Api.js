@@ -52,4 +52,20 @@ export default class Api {
         })
             .then(res => this._getRes(res));
     }
+
+    setLike(cardId) {
+        return fetch(`${this._options.baseUrl}/cards/likes/${cardId}`, {
+            method: 'PUT',
+            headers: this._options.headers
+        })
+            .then(res => this._getRes(res));
+    }
+
+    deleteLike(cardId) {
+        return fetch(`${this._options.baseUrl}/cards/likes/${cardId}`, {
+            method: 'DELETE',
+            headers: this._options.headers
+        })
+            .then(res => this._getRes(res));
+    }
 }
