@@ -52,20 +52,18 @@ api.getUserInfo()
             name: res.name,
             about: res.about
         });
-        userId = res._id;
-    })
-    .catch((error) => {
-        console.log(error);
-    })
-    .finally(() => {
         api.getCards()
             .then(res => {
                 cardList.renderItems(res);
             })
             .catch((error) => {
                 console.log(error);
-            })
+            });
+        userId = res._id;
     })
+    .catch((error) => {
+        console.log(error);
+    });
 
 const initUserInfo = () => {
     const userData = userInfo.getUserInfo();
@@ -79,11 +77,11 @@ const popupWithFormEdit = new PopupWithForm({
         api.setUserInfo(data)
             .then(res => {
                 userInfo.setUserInfo({ name: res.name, about: res.about });
+                popupWithFormEdit.close();
             })
             .catch((error) => {
                 console.log(error);
             });
-        popupWithFormEdit.close();
     }
 });
 
@@ -96,6 +94,7 @@ const popupAddCard = new PopupWithForm({
         api.addCard(data)
             .then(res => {
                 cardList.setItem(createCard(res), 'prepend');
+                popupAddCard.close();
             })
             .catch((error) => {
                 console.log(error);
@@ -103,7 +102,6 @@ const popupAddCard = new PopupWithForm({
             .finally(() => {
                 popupAddCard.loader(false);
             });
-        popupAddCard.close();
     }
 });
 

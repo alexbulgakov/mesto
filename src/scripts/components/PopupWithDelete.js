@@ -5,6 +5,8 @@ export default class PopupWithDelete extends Popup {
         super(popupSelector);
         this._callbackSubmitForm = callbackSubmitForm;
         this._formElement = this._popup.querySelector('.popup-form');
+        this._formButton = this._formElement.querySelector('.popup-form__button');
+        this._formButtonText = this._formButton.textContent;
     }
 
     open(card) {
@@ -13,9 +15,7 @@ export default class PopupWithDelete extends Popup {
     }
 
     loader(status) {
-        this._formButton = this._formElement.querySelector('.popup-form__button');
         if (status) {
-            this._formButtonText = this._formButton.textContent;
             this._formButton.textContent = 'Удаление...';
         } else this._formButton.textContent = this._formButtonText;
     }
